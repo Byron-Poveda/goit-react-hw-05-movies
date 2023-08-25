@@ -3,9 +3,8 @@ import axios from 'axios'
 import { headers, baseURL } from 'components/App'
 import Section from 'components/Section/Section'
 import ListMovies from '../ListMovies/ListMovies'
-const Home = ({}) => {
+const Home = () => {
     const [trending, setTrending] = useState({});
-    const imageBaseURL = 'https://image.tmdb.org/t/p/w500';
     const getMovies = () =>{
         axios({
             method: 'get',

@@ -6,7 +6,7 @@ import Home from './Home/Home'
 import Movies from './Movies/Movies'
 import InfoMovie from './Movies/InfoMovie/InfoMovie'
 import Error404 from '../Error404/Error404'
-const TMBD = ({}) => {
+const TMBD = () => {
   return (
     <Section className="min-h-full">
         <nav className="bg-gray-800">

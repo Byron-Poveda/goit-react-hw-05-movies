@@ -1,6 +1,6 @@
 import React from 'react'
 import Section from 'components/Section/Section'
-const Movies = ({}) => {
+const Movies = () => {
   return (
     <Section title="Movies">
 

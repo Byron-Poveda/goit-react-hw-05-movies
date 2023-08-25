@@ -6,9 +6,6 @@ import axios from 'axios'
 function InfoMovie() {
   const { movieId } = useParams();
   const [movie, setMovie] = useState({})
-  useEffect(()=>{
-    getInfoMovie()
-  },[useParams])
   const getInfoMovie = () => {
     axios({
       method: 'get',
@@ -18,6 +15,9 @@ function InfoMovie() {
     })
     .then(res => setMovie(res.data))
   }
+  useEffect(()=>{
+      getInfoMovie()
+  },[])
   return (
     <Section title='Movie' classNameText="!text-red-500">
       <span>{movie.title}</span>
