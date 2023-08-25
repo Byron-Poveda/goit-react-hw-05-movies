@@ -1,16 +1,11 @@
-export const App = () => {
+import React from 'react'
+import TMBD from './TMBD/TMBD'
+import { BrowserRouter } from 'react-router-dom'
+export default function App() {
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
-    </div>
-  );
-};
+    <BrowserRouter>
+      <TMBD/>
+    </BrowserRouter>
+  )
+}
+
