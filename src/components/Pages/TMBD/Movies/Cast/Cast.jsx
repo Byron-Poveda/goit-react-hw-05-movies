@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 
 const Cast = ({}) => {
   return (
@@ -7,6 +6,5 @@ const Cast = ({}) => {
   )
 }
 
-Cast.propTypes = {}
 
 export default Cast
