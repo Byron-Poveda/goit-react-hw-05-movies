@@ -9,6 +9,7 @@ import axios from 'axios'
 function InfoMovie() {
   const { movieId } = useParams();
   const [movie, setMovie] = useState({})
+  const [error, setError] = useState(false)
   const [groupGenres, setGroupGenres] = useState([])
   const getInfoMovie = () => {
     axios({
@@ -17,7 +18,11 @@ function InfoMovie() {
       url: `/movie/${movieId}?language=en-US`,
       headers,
     })
-    .then(res => setMovie(res.data))
+    .then(res => {
+      setMovie(res.data)
+      setError(false)
+    })
+    .catch(err => setError(true))
   }
   const getGenres = () => {
     const newGenres = []
@@ -36,7 +41,6 @@ function InfoMovie() {
     getGenres()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [movie])
-  if(movie){
     return (
       <Section classSection='flex flex-col gap-[20px]' classNameText="!text-red-500">
         <div className='flex items-center'>
@@ -46,7 +50,7 @@ function InfoMovie() {
             </Button>
         </div>
         <div className='flex gap-[20px] border-solid border-gray-800 rounded-[15px] border-2 p-[15px] max-md:flex-col max-md:items-center'>
-          {movie.poster_path ? <>
+          {!error ? <>
             <img className='rounded-[15px] max-md:w-[300px]' src={movie.poster_path ? baseImgURL +  movie.poster_path : baseImgURL + movie.backdrop_path} alt={movie?.title || movie?.name} />
           <div className='flex flex-col gap-[20px]'>
             <h1 className='font-bold text-[35px]'>{movie?.name || movie?.title}</h1>
@@ -58,14 +62,13 @@ function InfoMovie() {
           </div>
           </> : <p>Not Found Information</p>}
         </div>
-          {movie.poster_path ? <div className='flex gap-[10px]'>
+          {!error ? <div className='flex gap-[10px]'>
             <NavLink className="NavLink-desktop bg-gray-800" to={`/movies/${movieId}/cast`}>Cast</NavLink>
             <NavLink className="NavLink-desktop bg-gray-800" to={`/movies/${movieId}/reviews`}>Reviews</NavLink>
           </div> : null}
           <Outlet/>
       </Section>
     )
-  }
 }
 
 export default InfoMovie
