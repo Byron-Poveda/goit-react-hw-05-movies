@@ -1,10 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Section = ({children, className, title, classNameText}) => {
+const Section = ({children, classSection, title, classNameText}) => {
   return (
-    <section className={className} >
-      {title ? <h1 className={`${classNameText} text-3xl font-bold tracking-tight text-gray-900`}>{title}</h1> : null}
+    <section className={classSection} >
+      {title ? <h1 className={`${classNameText} text-3xl font-bold tracking-tight text-gray-900 mb-[20px]`}>{title}</h1> : null}
       {children}
     </section>
   )
@@ -13,7 +13,7 @@ const Section = ({children, className, title, classNameText}) => {
 Section.propTypes = {
     children: PropTypes.node,
     title: PropTypes.string,
-    className: PropTypes.string,
+    classSection: PropTypes.string,
     classNameText: PropTypes.string,
 }
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import { headers, baseURL } from 'components/App'
+import { headers, baseURL } from 'components/Pages/Settings'
 import Section from 'components/Section/Section'
 import ListMovies from '../ListMovies/ListMovies'
 const Home = () => {
@@ -13,6 +13,7 @@ const Home = () => {
             headers,
           })
         .then(response => setTrending(response.data))
+        .catch(err => console.log(err))
     }
     useEffect(()=>{
         getMovies()
